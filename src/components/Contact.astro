@@ -1,0 +1,94 @@
+---
+import LetterGlitch from "@/React/LetterGlitch.tsx";
+---
+
+<section id="contact" class="w-full py-12">
+  <div class="max-w-5xl mx-auto">
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+        <div class="flex justify-center md:h-[292px] w-full md:w-[370px] mt-6 md:mt-5 md:ml-0">
+            <LetterGlitch
+            client:load
+            glitchColors={["#5e4491", "#A476FF", "#241a38"]}
+            glitchSpeed={33}
+            centerVignette={false}
+            outerVignette={true}
+            smooth={true}
+            />
+        </div>
+        <div>
+        <form
+          id="contact-form"
+          action="https://formspree.io/f/mnnjznkj"
+          method="POST"
+          class="flex flex-col gap-4"
+        >
+          <input
+            type="text"
+            name="from_name"
+            placeholder="Nombre"
+            required
+            class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)]"
+          />
+          <input
+            type="email"
+            name="reply_to"
+            placeholder="Mail"
+            required
+            class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)]"
+          />
+          <textarea
+            name="message"
+            placeholder="Mensaje"
+            rows="6"
+            required
+            class="px-4 py-2 bg-[#1414149c] text-[var(--white)] border border-[var(--white-icon-tr)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--sec)] resize-none"
+          ></textarea>
+          <button
+            type="submit"
+            class="px-4 py-2 bg-[var(--white-icon-tr)] text-[var(--white)] rounded-lg opacity-60 transition-opacity border border-[var(--white-icon-tr)] hover:opacity-100 hover:bg-[var(--white-icon-tr)]"
+          >
+            Enviar
+          </button>
+        </form>
+        <div
+          id="form-message"
+          class="hidden justify-center items-center mt-4 text-[var(--white)] text-lg"
+        >
+          ✅ ¡Gracias por tu mensaje!
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="module" is:inline>
+  const form = document.getElementById("contact-form");
+  const formMessage = document.getElementById("form-message");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+      if (response.ok) {
+        form.reset();
+        form.style.display = "none";
+        formMessage.classList.remove("hidden");
+      } else {
+        const data = await response.json();
+        console.error("Error response:", data);
+        alert("Se produjo un problema al intentar enviar tu mensaje.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Se produjo un problema al intentar enviar tu mensaje.");
+    }
+  });
+</script>

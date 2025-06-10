@@ -1,0 +1,64 @@
+---
+const personalImageAlt = "Tatiana Mezzano"
+import Badge from "@/components/Badge.astro"
+import LinkedInIcon from "@/components/icons/LinkedIn.astro"
+import MailIcon from "@/components/icons/Mail.astro"
+import SocialPill from "@/components/SocialPill.astro"
+import LetterGlitch from "@/React/LetterGlitch.tsx";
+---
+
+<div class="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-6xl mx-auto">
+  <div class="max-w-xl flex-1">
+    <div class="flex gap-4 mb-4">
+      <img
+        class="rounded-full shadow-lg size-16"
+        src="/tatiPixelArt.png"
+        alt={personalImageAlt}
+      />
+      <a
+        href="mailto:tatianamezzanom@gmail.com"
+        class="flex items-center transition md:justify-center md:hover:scale-105"
+      >
+        <Badge>Contáctame</Badge>
+      </a>
+    </div>
+    <h1 class="text-4xl tracking-tight text-gray-800 sm:text-4xl dark:text-white">
+      Hey, soy Tati
+    </h1>
+    <p class="mt-6 text-xl text-gray-800 dark:[&>span]:text-violet-500 [&>span]:text-orange-500 [&>span]:font-semibold dark:text-gray-300">
+      Diseño, desarrollo y doy soporte a productos digitales adaptados a las necesidades de cada cliente.  <br/> Me especializo en crear soluciones digitales modernas, funcionales y atractivas.
+    </p>
+
+    <p class="mt-6 text-2xl text-gray-800 dark:[&>span]:text-violet-500 [&>span]:text-orange-500 [&>span]:font-semibold dark:text-gray-300">
+      ¡Tu próximo proyecto puede empezar hoy!
+    </p>
+
+  </div>
+
+</div>
+
+<style>
+  h1{
+    font-family: "Press Start 2P", system-ui;
+    overflow: hidden;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    animation: typing 1.2s steps(12) forwards, blink 0.7s step-end infinite;
+    font-family: 'Press Start 2P', monospace;
+  }
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 13ch;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+</style>
+
