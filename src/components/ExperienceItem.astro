@@ -17,11 +17,11 @@ const { title, company, description, link, date } = Astro.props
 >
   <div class="relative pb-12 md:col-span-2">
     <div class="sticky top-0">
-      <span class="text-violet-500 -left-[42px] absolute rounded-full text-5xl"
-        >&bull;</span
-      >
+      <span class="dot-pulse absolute -left-[42px] text-orange-700 text-5xl leading-none">
+        &bull;
+      </span>
 
-      <h3 class="text-xl font-bold text-violet-500">{title}</h3>
+      <h3 class="text-xl font-bold">{title}</h3>
       <h4 class="font-semibold text-xl text-gray-600 dark:text-white">{company}</h4>
       <time class="p-0 m-0 text-sm text-gray-600/80 dark:text-white/80">{date}</time>
     </div>
@@ -54,3 +54,21 @@ const { title, company, description, link, date } = Astro.props
     }
   </div>
 </div>
+
+<style>
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.8;
+    }
+  }
+
+  .dot-pulse {
+    animation: pulse 1.2s ease-in-out infinite;
+    display: inline-block;
+  }
+</style>
